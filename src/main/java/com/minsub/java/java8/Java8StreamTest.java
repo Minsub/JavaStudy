@@ -9,6 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.DoubleStream;
 import java.util.stream.IntStream;
@@ -122,8 +123,12 @@ public class Java8StreamTest {
         //TODO: filter
 
         //TODO: map
+        System.out.println("\n## map()");
+        List<String> list = listHash.stream().map(map -> (String)map.get("key")).distinct().collect(Collectors.toList());
+        System.out.println("List: " + list);
 
         //TODO: flatMap
+
 
         //TODO: mapToInt
 
