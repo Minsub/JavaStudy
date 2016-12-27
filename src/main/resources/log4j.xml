@@ -31,7 +31,7 @@
         </layout>
     </appender>
 
-    <logger name="com.minsub.java.kafka">
+    <logger name="com.minsub.java.logger.kafka">
         <level value="debug" />
         <appender-ref ref="kafkaAppender" />
     </logger>

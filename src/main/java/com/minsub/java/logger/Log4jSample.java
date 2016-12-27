@@ -10,7 +10,6 @@ public class Log4jSample {
     private static Logger LOG = Logger.getLogger(Log4jSample.class);
 
     public static void main(String[] args ) {
-        System.out.println("AAAA");
         LOG.info("log message 1");
         LOG.error("log message error 2");
     }
