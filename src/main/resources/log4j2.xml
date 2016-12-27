@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <!-- Appender, Layout 설정 -->
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="[%-5p] [%d] [Thread:%t] %-17c{2} (%13F:%L) %3x - %m%n"/>
+        </Console>
+
+        <File name="fileAppender" fileName="C:/Test/log/log4j2_test.log" append="true">
+            <PatternLayout pattern="[%-5p] [%d] [Thread:%t] %-17c{2} (%13F:%L) %3x - %m%n"/>
+        </File>
+
+        <Kafka name="kafkaAppender" topic="test">
+            <PatternLayout pattern="[%-5p] [%d] [Thread:%t] %-17c{2} (%13F:%L) %3x - %m%n"/>
+            <Property name="bootstrap.servers">localhost:9092</Property>
+        </Kafka>
+    </Appenders>
+
+    <!-- Logger 설정 -->
+    <Loggers>
+        <Logger name="com.minsub.java.logger" level="DEBUG" additivity="false">
+            <AppenderRef ref="console"/>
+            <AppenderRef ref="fileAppender"/>
+        </Logger>
+
+        <Logger name="com.minsub.java.logger.kafka" level="DEBUG" additivity="false">
+            <AppenderRef ref="kafkaAppender"/>
+        </Logger>
+
+        <Root level="DEBUG">
+            <AppenderRef ref="console"/>
+        </Root>
+    </Loggers>
+</Configuration>
