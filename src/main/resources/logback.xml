@@ -13,15 +13,24 @@
                 <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
             </layout>
         </encoder>
-
         <topic>test</topic>
         <producerConfig>bootstrap.servers=localhost:9092</producerConfig>
     </appender>
 
-    <logger name="org.apache.kafka" level="ERROR"/>
+    <!-- kafkaAppender with Logstash -->
+    <appender name="logstashKafkaAppender" class="com.github.danielwegener.logback.kafka.KafkaAppender">
+        <encoder class="com.github.danielwegener.logback.kafka.encoding.PatternLayoutKafkaMessageEncoder">
+            <layout class="net.logstash.logback.layout.LogstashLayout" />
+        </encoder>
+        <topic>test</topic>
+        <producerConfig>bootstrap.servers=localhost:9092</producerConfig>
+    </appender>
 
+
+    <!-- logger -->
+    <logger name="org.apache.kafka" level="ERROR"/>
     <logger name="com.minsub.java.logger.kafka" level="DEBUG">
-        <appender-ref ref="kafkaAppender" />
+        <appender-ref ref="logstashKafkaAppender" />
     </logger>
 
     <root level="DEBUG">
