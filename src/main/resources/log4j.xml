@@ -23,7 +23,7 @@
 
     <!-- kafkaAppender -->
     <appender name="kafkaAppender" class="org.apache.kafka.log4jappender.KafkaLog4jAppender">
-        <param name="Topic" value="test" />
+        <param name="Topic" value="test-log4j" />
         <param name="BrokerList" value="localhost:9092" />
         <param name="syncSend" value="true" />
         <layout class="org.apache.log4j.PatternLayout">
