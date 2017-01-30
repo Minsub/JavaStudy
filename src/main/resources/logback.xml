@@ -28,11 +28,11 @@
 
 
     <!-- logger -->
-    <logger name="org.apache.kafka" level="ERROR"/>
+    <logger name="org.apache.kafka" level="INFO"/>
     <logger name="com.minsub.java.logger.kafka" level="DEBUG">
-        <appender-ref ref="logstashKafkaAppender" />
-        <!--
         <appender-ref ref="kafkaAppender" />
+        <!--
+        <appender-ref ref="logstashKafkaAppender" />
         -->
     </logger>
 

@@ -16,11 +16,11 @@ public class ConsumerLoop implements Runnable {
     private final List<String> topics;
     private final int id;
 
-    public ConsumerLoop(int id, String groupId, List<String> topics) {
+    public ConsumerLoop(int id, String bootstrapServers, String groupId, List<String> topics) {
         this.id = id;
         this.topics = topics;
         Properties props = new Properties();
-        props.put("bootstrap.servers", "localhost:9092");
+        props.put("bootstrap.servers", bootstrapServers);
         props.put("group.id", groupId);
         props.put("key.deserializer", StringDeserializer.class.getName());
         props.put("value.deserializer", StringDeserializer.class.getName());
