@@ -28,7 +28,6 @@ public class MockitoTest {
         when(p.getAge()).thenReturn(33);
         when(p.getAddress()).thenReturn("Seoul");
 
-
         System.out.println("P from mock: " + p.getName());
 
     }
