@@ -1,4 +1,4 @@
-package com.minsub.java.test.sinsege.sample;
+package com.minsub.java.test.sinsege.samples;
 
 import java.util.Collection;
 
