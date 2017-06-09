@@ -1,10 +1,5 @@
 package com.minsub.java.test.kakao;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Scanner;
-
 /**
  * Created by jiminsub on 2017. 5. 14..
  */
@@ -14,7 +9,7 @@ public class Test1 {
         int nResult = 0;
 
         for (int i=0; i < a.length; i++) {
-            nResult += getMinimumCount(a[i], m[i]);
+            nResult += getMinimumCount2(a[i], m[i]);
         }
 
         return nResult;
@@ -36,10 +31,26 @@ public class Test1 {
                 } else {
                     nA--;
                 }
-
                 nCnt++;
             }
         }
+        return nCnt;
+    }
+
+    // new
+    private static int getMinimumCount2(int a, int m) {
+        int nCnt = 0;
+        int nA, nM;
+        while (a > 0) {
+            nA = a % 10;
+            nM = m % 10;
+
+            nCnt += Math.abs(nA - nM);
+
+            a = a / 10;
+            m = m / 10;
+        }
+
         return nCnt;
     }
 
@@ -53,35 +64,4 @@ public class Test1 {
         System.out.println(t.minimumMoves(a, m));
     }
 
-    public static void main2(String[] args) throws IOException {
-        Scanner in = new Scanner(System.in);
-        final String fileName = System.getenv("OUTPUT_PATH");
-        BufferedWriter bw = new BufferedWriter(new FileWriter(fileName));
-        int res;
-
-        int _a_size = 0;
-        _a_size = Integer.parseInt(in.nextLine().trim());
-        int[] _a = new int[_a_size];
-        int _a_item;
-        for(int _a_i = 0; _a_i < _a_size; _a_i++) {
-            _a_item = Integer.parseInt(in.nextLine().trim());
-            _a[_a_i] = _a_item;
-        }
-
-
-        int _m_size = 0;
-        _m_size = Integer.parseInt(in.nextLine().trim());
-        int[] _m = new int[_m_size];
-        int _m_item;
-        for(int _m_i = 0; _m_i < _m_size; _m_i++) {
-            _m_item = Integer.parseInt(in.nextLine().trim());
-            _m[_m_i] = _m_item;
-        }
-
-        res = minimumMoves(_a, _m);
-        bw.write(String.valueOf(res));
-        bw.newLine();
-
-        bw.close();
-    }
 }

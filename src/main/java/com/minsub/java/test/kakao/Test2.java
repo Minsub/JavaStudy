@@ -16,7 +16,7 @@ public class Test2 {
         for (int i=0; i < nums.length; i++) {
             item = new Integer[2];
             item[0] = nums[i];
-            item[1] = getCardinalityCount(item[0]);
+            item[1] = getCardinalityCount2(item[0]);
             listDecBinCount.add(item);
         }
 
@@ -40,10 +40,18 @@ public class Test2 {
                 nCnt++;
             }
         }
-
         return nCnt;
     }
 
+    // new
+    public static int getCardinalityCount2(int n) {
+        int cnt = 0;
+        while(n > 0) {
+            cnt += (n & 1);
+            n >>= 1;
+        }
+        return cnt;
+    }
 
 
     public static void main(String[] args) {

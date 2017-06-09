@@ -27,14 +27,25 @@ public class Test3 {
             if ((nJumpedIdx >= s.length()) || s.charAt(nJumpedIdx) != '(') {  // count 1
                 nCount = 1;
             } else { // count n
-                StringBuilder sb = new StringBuilder();
+
+//                StringBuilder sb = new StringBuilder();
+//                int nCountIdx = 0;
+//                while (s.charAt(nJumpedIdx + 1 + nCountIdx) != ')') {
+//                    sb.append(s.charAt(nJumpedIdx + 1 + nCountIdx));
+//                    nCountIdx++;
+//                }
+//
+//                nCount = Integer.valueOf(sb.toString());
+
+                // new
                 int nCountIdx = 0;
+                nCount = 0;
                 while (s.charAt(nJumpedIdx + 1 + nCountIdx) != ')') {
-                    sb.append(s.charAt(nJumpedIdx + 1 + nCountIdx));
+                    nCount = nCount * 10 + Character.getNumericValue(s.charAt(nJumpedIdx + 1 + nCountIdx));
                     nCountIdx++;
                 }
+                // end of new
 
-                nCount = Integer.valueOf(sb.toString());
                 nJump += (2 + nCountIdx);
             }
 
