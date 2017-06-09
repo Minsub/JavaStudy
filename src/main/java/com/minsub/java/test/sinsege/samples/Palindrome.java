@@ -14,6 +14,6 @@ public class Palindrome {
 
 
     public static void main(String[] args) {
-        System.out.println(com.minsub.java.test.sinsege.sample.Palindrome.isPalindrome("Deleveled"));
+        System.out.println(Palindrome.isPalindrome("Deleveled"));
     }
 }

@@ -12,7 +12,7 @@ public class UserInput {
         }
     }
 
-    public static class NumericInput extends com.minsub.java.test.sinsege.sample.UserInput.TextInput {
+    public static class NumericInput extends TextInput {
         public void add(char c) {
             if (c >= '0' && c <= '9') {
                 super.add(c);
@@ -22,7 +22,7 @@ public class UserInput {
     }
 
     public static void main(String[] args) {
-        com.minsub.java.test.sinsege.sample.UserInput.TextInput input = new com.minsub.java.test.sinsege.sample.UserInput.NumericInput();
+      UserInput.TextInput input = new UserInput.NumericInput();
         input.add('1');
         input.add('a');
         input.add('0');

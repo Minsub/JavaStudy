@@ -2,7 +2,7 @@ package com.minsub.java.test.sinsege.samples;
 
 public class BinarySearchTree {
 
-    public static boolean contains(com.minsub.java.test.sinsege.sample.Node root, int value) {
+    public static boolean contains(Node root, int value) {
         if (root.value == value) {
             return true;
         } else {
@@ -17,9 +17,9 @@ public class BinarySearchTree {
     }
 
     public static void main(String[] args) {
-        com.minsub.java.test.sinsege.sample.Node n1 = new com.minsub.java.test.sinsege.sample.Node(1, null, null);
-        com.minsub.java.test.sinsege.sample.Node n3 = new com.minsub.java.test.sinsege.sample.Node(3, null, null);
-        com.minsub.java.test.sinsege.sample.Node n2 = new com.minsub.java.test.sinsege.sample.Node(2, n1, n3);
+        Node n1 = new Node(1, null, null);
+        Node n3 = new Node(3, null, null);
+        Node n2 = new Node(2, n1, n3);
 
         System.out.println(contains(n2, 3));
     }
