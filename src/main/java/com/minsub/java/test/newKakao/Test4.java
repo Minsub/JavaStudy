@@ -40,23 +40,50 @@ board	answer
 
 입출력 예 #2
 | 0 | 0 | 1 | 1 |
-| 1 | 1 | 1 | 1 | 
+| 1 | 1 | 1 | 1 |
+| 1 | 1 | 1 | 1 |
+| 0 | 0 | 1 | 0 |
 로 가장 큰 정사각형의 넓이는 4가 되므로 4를 return합니다.
  */
 public class Test4 {
-    
+
     public static int solution(int[][] board) {
-        return 0;
+        int[][] cache = new int[board.length][board[0].length];
+
+          int result = 0;
+        for (int i = 0; i < board.length; i++ ) {
+            for (int j = 0; j < board[i].length; j++) {
+                if (i == 0 || j == 0) {
+                    cache[i][j] = board[i][j];
+                } else if (board[i][j] == 1) {
+                    cache[i][j] = Math.min(cache[i - 1][j - 1], Math.min(cache[i - 1][j], cache[i][j - 1])) + 1;
+                    if (cache[i][j] > result) {
+                        result = cache[i][j];
+                    }
+                }
+            }
+        }
+        return result;
     }
-    
+
     @Test
     public void case1() {
-        int[][] input = {{0,1,1,1},{1,1,1,1},{1,1,1,1},{0,0,1,0}};
-        Assert.assertEquals(0, solution(input));
+        int[][] input = {
+                {0, 1, 1, 1},
+                {1, 1, 1, 1},
+                {1, 1, 1, 1},
+                {0, 0, 1, 0}};
+        Assert.assertEquals(3, solution(input));
     }
-    
+
     @Test
     public void case2() {
-       
+        int[][] input = {
+                {0,1,1,1,1},
+                {1,1,1,1,1},
+                {1,1,1,1,1},
+                {0,1,1,1,1},
+                {0,0,1,0,1}};
+        Assert.assertEquals(4, solution(input));
     }
 }
