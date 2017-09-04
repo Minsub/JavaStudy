@@ -50,7 +50,7 @@ public class Test4 {
     public static int solution(int[][] board) {
         int[][] cache = new int[board.length][board[0].length];
 
-          int result = 0;
+        int result = 0;
         for (int i = 0; i < board.length; i++ ) {
             for (int j = 0; j < board[i].length; j++) {
                 if (i == 0 || j == 0) {
@@ -63,7 +63,7 @@ public class Test4 {
                 }
             }
         }
-        return result;
+        return result * result;
     }
 
     @Test

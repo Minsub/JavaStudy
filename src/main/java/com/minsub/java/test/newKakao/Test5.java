@@ -30,22 +30,44 @@ land	answer
 public class Test5 {
     
     public static int solution(int[][] land) {
-        
-        for (int i=0; i < land.length; i++) {
-            System.out.println(i);
+        int maxValue = 0;
+        int tmp;
+        for (int i=0; i < land[0].length; i++) {
+            tmp = getMaxValuePath(land, i);
+            if (tmp > maxValue) {
+                maxValue = tmp;
+            }
         }
         
-        return 16;
+        return maxValue;
     }
-    
+
+    public static int getMaxValuePath(int[][] land, int startIndex) {
+        int result = 0;
+        int idx = startIndex;
+        for (int i=0; i < land.length; i++) {
+            idx = getMaxValueIndex(land[i], idx);
+            result += land[i][idx];
+        }
+
+        return result;
+    }
+
+    public static int getMaxValueIndex(int[] arr, int aboveIndex) {
+        int tmp = 0;
+        int idx = 0;
+        for (int i=0; i < arr.length; i++) {
+            if (i != aboveIndex && arr[i] > tmp) {
+                tmp = arr[i];
+                idx = i;
+            }
+        }
+        return idx;
+    }
+
     @Test
     public void case1() {
         int[][] input = {{1,2,3,5},{5,6,7,8},{4,3,2,1}};
         Assert.assertEquals(16, solution(input));
-    }
-    
-    @Test
-    public void case2() {
-       
     }
 }
