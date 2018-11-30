@@ -1,6 +1,7 @@
 package com.minsub.java.java8;
 
 import org.junit.Test;
+
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.*;
@@ -70,6 +71,16 @@ public class Java8TimeTest {
 		
 		long ga1 = ChronoUnit.MILLIS.between(lastProcessingTime, LocalDateTime.now());
 		System.out.println("ChronoUnit.MILLIS.between: " + ga1);
+	}
+	
+	
+	@Test
+	public void test2() {
+		String from = LocalDate.now().minusMonths(1).withDayOfMonth(1).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+		String to = LocalDate.now().plusDays(1).format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+		
+		System.out.println(from);
+		System.out.println(to);
 	}
 
 	public void test1() {
