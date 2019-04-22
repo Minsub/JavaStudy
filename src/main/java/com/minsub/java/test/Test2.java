@@ -57,15 +57,23 @@ public class Test2 {
     private static final String URL_PATTERN = "/^(http|https?|ftps?|sftp):\\/\\/([a-z0-9-]+\\.)+[a-z0-9]{2,4}.*$/";
     
     @Test
-    public void date() {
+    public void tt() {
+        int[] a = {1,1,2,2,3};
+        System.out.println(solution(a));
+    }
     
-        String a = null;
-        
-        if (a != null || a.equalsIgnoreCase("a")) {
-            System.out.println("IF");
-        } else {
-            System.out.println("ELSE");
+    public int solution(int[] input) {
+        Set<Integer> firestSet = new HashSet<>();
+        Set<Integer> allValues = new HashSet<>();
+        for (int i=0; i < input.length; i++) {
+            if (allValues.contains(input[i])) {
+                firestSet.remove(input[i]);
+            } else {
+                firestSet.add(input[i]);
+            }
+            allValues.add(input[i]);
         }
+        return firestSet.iterator().next();
     }
     
     public static Set<String> extractUrls(String text) {

@@ -1,5 +1,6 @@
 package com.minsub.java.java8;
 
+import com.google.common.collect.Lists;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.junit.Before;
@@ -128,8 +129,13 @@ public class Java8StreamTest {
         System.out.println("List: " + list);
 
         //TODO: flatMap
-
-
+    
+        System.out.println(Lists.newArrayList(1,2,3,4,5).stream()
+                .map(v -> Lists.newArrayList("a","b","c"))
+                .flatMap(s -> s.stream())
+                .collect(Collectors.toList()));
+        
+        
         //TODO: mapToInt
 
     }

@@ -1,5 +1,7 @@
 package com.minsub.java.test;
 
+import org.apache.commons.lang.StringUtils;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -10,34 +12,12 @@ import java.util.List;
 public class sample {
 
     public static void main(String[] args) {
-       int a = 1234;
-
-
-
-        System.out.println();
-
-
-        String s = Integer.toBinaryString(20);
-
-        System.out.println(s);
-
-
-        List<Integer> list = Arrays.asList(3,2,1);
-
-        Collections.sort(list);
-
-
-        System.out.println(list);
-
-
-
-
-        char c = '1';
-        System.out.println((int)c);
-        System.out.println((int)'a' - 'a');
-        System.out.println((int)'z' - 'a');
-
-        System.out.println(c - '1');
-
+    
+        String s = null;
+        String[] arr = StringUtils.split(s, ",");
+        System.out.println(arr.length);
+    
+        String[] arr2 = s.split(",");
+        System.out.println(arr2.length);
     }
 }
