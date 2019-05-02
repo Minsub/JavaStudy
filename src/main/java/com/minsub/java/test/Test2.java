@@ -151,4 +151,32 @@ public class Test2 {
         
         
     }
+    
+    @Test
+    public void aaaaaa() {
+        int n = 10;
+        System.out.println(solution(n));
+        System.out.println(fibo(n + 1));
+    }
+    
+    public int solution(int n) {
+        int answer = 0;
+        int a = 2; int b= 3;
+        if(n<4) return n;
+        for(int i =4; i<=n; i++){
+            answer = (a+b)%1000000007;
+            a = b;
+            b = answer ;
+        }
+        return answer;
+    }
+    
+    public int fibo(int n) {
+        if (n < 2) {
+            return n;
+        } else {
+            return fibo(n - 2) + fibo(n - 1);
+        }
+    }
 }
+
