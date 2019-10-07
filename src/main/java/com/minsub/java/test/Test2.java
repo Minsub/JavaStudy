@@ -8,10 +8,13 @@ import org.junit.*;
 import org.junit.Test;
 
 import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * Created by jiminsub on 2017. 5. 14..
@@ -60,6 +63,9 @@ public class Test2 {
     public void tt() {
         int[] a = {1,1,2,2,3};
         System.out.println(solution(a));
+    
+    
+        System.out.println(String.format("\'%s\'", "ABC"));
     }
     
     public int solution(int[] input) {
@@ -92,10 +98,11 @@ public class Test2 {
     
     @Test
     public void stream() {
-        List list1 = Lists.newArrayList(1,2,3);
-        List list2 = Lists.newArrayList(3,2,1);
-    
-        System.out.println(list1.equals(list2));
+        String linkUrl = "kakaoplus://plusfriend/coupon/223196105/215?aa";
+        int lastIndex = linkUrl.contains("?") ? linkUrl.lastIndexOf("?") : linkUrl.length();
+        System.out.println(linkUrl.lastIndexOf("?"));
+        Long couponId = Long.valueOf(linkUrl.substring(linkUrl.lastIndexOf("/") + 1, lastIndex));
+        System.out.println(couponId);
     }
     
     @Test
@@ -133,30 +140,32 @@ public class Test2 {
     
     @Test
     public void url() throws Exception {
-        String path = "http://www.daum.net/test/test/";
+        String dbData = "390,602-2A,66";
+        String[] array = StringUtils.split(dbData, ",");
+        List<String> aa = Stream.of(array).collect(Collectors.toList());
+        System.out.println(aa);
     
-    
-        URL url = new URL(path);
-    
-        System.out.println(url.getHost());
-        System.out.println(url.getPath());
-        
+        System.out.println(Stream.of(StringUtils.split("390,602-2A,66", ",")).collect(Collectors.toList())
+        );
     }
     
     @Test
     public void stringutils() {
-        String s = "123.123412312";
-        s = "123.23";
-        System.out.println(StringUtils.isNumeric(s));
+        LocalDateTime now = LocalDateTime.now();
+    
+    
+        System.out.println(now.format(DateTimeFormatter.BASIC_ISO_DATE));
         
         
     }
     
     @Test
     public void aaaaaa() {
-        int n = 10;
-        System.out.println(solution(n));
-        System.out.println(fibo(n + 1));
+        List<Integer> list = Lists.newArrayList(1,2,3,4,5,6,7,8,9,10);
+        int fetchSize = 3;
+        int page = 5;
+        int preindex = (page - 1) * fetchSize;
+        System.out.println(list.subList(preindex >= list.size() ? list.size() : preindex, fetchSize * page >= list.size() ? list.size() : fetchSize * page));
     }
     
     public int solution(int n) {

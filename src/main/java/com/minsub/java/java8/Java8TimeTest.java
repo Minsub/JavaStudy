@@ -82,6 +82,14 @@ public class Java8TimeTest {
 		System.out.println(from);
 		System.out.println(to);
 	}
+	
+	@Test
+	public void test3() {
+		LocalDate now = LocalDate.now();
+		String dd = now.minusDays(7).format(DateTimeFormatter.ofPattern("yyyyMMdd"));
+		System.out.println(dd);
+		
+	}
 
 	public void test1() {
 	    //날짜 가져오기
