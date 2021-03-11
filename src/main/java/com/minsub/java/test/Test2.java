@@ -1,6 +1,9 @@
 package com.minsub.java.test;
 
+import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
+import com.minsub.java.java8.StatusTest;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.time.FastDateFormat;
@@ -34,7 +37,7 @@ public class Test2 {
     
         String url = "http://k.kakaocdn.net/dn/bwWqwt/btqhaIbD8Fc/E5nkjaxKOfMOCfHReoTyX1/img_s.jpg";
         System.out.println(FilenameUtils.getExtension(url));
-            
+        
         
         String aa = "aaaa";
         ttt(aa);
@@ -89,11 +92,19 @@ public class Test2 {
         Matcher matcher = urlPattern.matcher(text.toLowerCase());
         for (int i=0; i < matcher.groupCount(); i++) {
             if (matcher.find(i)) {
-                System.out.println(i + ": " + matcher.group(i));    
+                System.out.println(i + ": " + matcher.group(i));
             }
         }
         
         return urls;
+    }
+    
+    @Test
+    public void test() {
+    
+        Set<StatusTest> set = Sets.newHashSet(StatusTest.S1, StatusTest.S2, StatusTest.S3);
+    
+        System.out.println(Joiner.on(",").join(set));
     }
     
     @Test
