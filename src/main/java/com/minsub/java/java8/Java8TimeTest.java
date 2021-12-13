@@ -1,14 +1,18 @@
 package com.minsub.java.java8;
 
+import com.google.common.collect.Lists;
 import org.junit.Test;
 
-import java.sql.Date;
+import java.awt.*;
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
 import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAdjusters;
+import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
 
@@ -90,6 +94,50 @@ public class Java8TimeTest {
 		System.out.println(dd);
 		
 	}
+	
+	@Test
+	public void test4() {
+		LocalDateTime now = LocalDateTime.now(ZoneId.of("Asia/Seoul"));
+		System.out.println(now.format(DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss")));
+		
+		String startDate = "20210520T093000Z";
+//		String startDate = "20210520T093000UTC+05:30";
+		String timezone = "Asia/Seoul";
+		
+		LocalDateTime dateTime = LocalDateTime.parse(startDate, DateTimeFormatter.ofPattern("yyyyMMdd'T'HHmmssz"));
+		
+		
+		System.out.println(dateTime.toString());
+		
+	}
+	
+	@Test
+	public void test5() throws Exception {
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd'T'HHmmssXXX");
+		sdf.setTimeZone(TimeZone.getTimeZone("Asia/Seoul"));
+//		sdf.setTimeZone(TimeZone.getTimeZone("UTC"));
+		String d = "20210520T010000Z";
+		Date date = sdf.parse(d);
+		
+		SimpleDateFormat sdfOut = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss XXX");
+		sdfOut.setTimeZone(TimeZone.getTimeZone("Asia/Seoul"));
+		System.out.println(sdfOut.format(date));
+
+//		System.out.println(sdf.format(new Date()));
+	
+	
+	}
+	
+	@Test
+	public void just() throws Exception {
+		List list = Lists.newArrayList(1,2,3,4,5,6,7,8,9, 10);
+		list.subList(0, 3);
+		System.out.println(list.subList(10, 10));
+		
+		
+		
+		
+	}
 
 	public void test1() {
 	    //날짜 가져오기
@@ -143,7 +191,7 @@ public class Java8TimeTest {
 	    Date.from(LocalDateTime.now().atZone(ZoneId.systemDefault()).toInstant()); // Sat Apr 18 01:00:30 KST 2015
 	    //LocalDate -> java.sql.Date
 
-	    Date.valueOf(LocalDate.of(2015, 5, 5)); // 2015-05-05
+//	    Date.valueOf(LocalDate.of(2015, 5, 5)); // 2015-05-05
 	    //LocalDateTime -> java.sql.Timestamp
 
 	    Timestamp.valueOf(LocalDateTime.now()); // 2015-04-18 01:06:55.323
@@ -160,7 +208,7 @@ public class Java8TimeTest {
 	    LocalDateTime.ofInstant(new java.util.Date().toInstant(), ZoneId.systemDefault()); // 2015-04-18T01:16:46.755
 
 	    //java.sql.Date -> LocalDate
-	    new Date(System.currentTimeMillis()).toLocalDate(); // 2015-04-18
+	    new Date(System.currentTimeMillis()).toString();
 
 	    //java.sql.Timestamp -> LocalDateTime
 	    new Timestamp(System.currentTimeMillis()).toLocalDateTime(); // 2015-04-18T01:20:07.364
