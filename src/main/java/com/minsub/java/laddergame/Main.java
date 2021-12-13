@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Main {
@@ -20,16 +20,9 @@ public class Main {
     }
     
     @Test
-    public void print() {
-        List<List<Boolean>> ladder = generatorLadder();
-        ladder.forEach(line -> {
-            System.out.print("  ");
-            line.forEach(e -> {
-                System.out.print("|" + (e ? "----" : "    "));
-            });
-            System.out.println("|  ");
-        });
-    
+    public void testLadder() {
+        List<List<Boolean>> ladder = generatorLadder(5, 5);
+        print(ladder);
         System.out.println("doit. select: " + 0 + ", result: " + doit(ladder, 0));
         System.out.println("doit. select: " + 1 + ", result: " + doit(ladder, 1));
         System.out.println("doit. select: " + 2 + ", result: " + doit(ladder, 2));
@@ -37,7 +30,42 @@ public class Main {
         System.out.println("doit. select: " + 4 + ", result: " + doit(ladder, 4));
     }
     
-    private List<List<Boolean>> generatorLadder() {
+    private void print(List<List<Boolean>> ladder) {
+        int playerCount = ladder.get(0).size();
+        System.out.print("  ");
+        for (int i=0;i<=playerCount;i++) {
+            System.out.print(i + "    ");
+        }
+        System.out.println();
+        ladder.forEach(line -> {
+            System.out.print("  ");
+            line.forEach(e -> {
+                System.out.print("|" + (e ? "----" : "    "));
+            });
+            System.out.println("|  ");
+        });
+        System.out.print("  ");
+        for (int i=0;i<=playerCount;i++) {
+            System.out.print(i + "    ");
+        }
+        System.out.println();
+    }
+    
+    private List<List<Boolean>> generatorLadder(int width, int playerCount) {
+        final Random random = new Random();
+        return IntStream.range(0, width).mapToObj(i -> {
+            List<Boolean> line = Lists.newArrayList();
+            boolean pre = false;
+            for (int j=0; j<playerCount-1;j++) {
+                boolean target = pre ? false : random.nextBoolean();
+                line.add(target);
+                pre = target;
+            }
+            return line;
+        }).collect(Collectors.toList());
+    }
+    
+    private List<List<Boolean>> generatorLadder2() {
         List<List<Boolean>> ladder = Lists.newArrayList();
         ladder.add(Lists.newArrayList(true, false, false, true));
         ladder.add(Lists.newArrayList(false, true, false, false));
