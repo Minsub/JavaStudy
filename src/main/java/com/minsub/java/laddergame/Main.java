@@ -31,6 +31,12 @@ public class Main {
     }
     
     private void print(List<List<Boolean>> ladder) {
+        int playerCount = ladder.get(0).size();
+        System.out.print("  ");
+        for (int i=0;i<=playerCount;i++) {
+            System.out.print(i + "    ");
+        }
+        System.out.println();
         ladder.forEach(line -> {
             System.out.print("  ");
             line.forEach(e -> {
@@ -38,6 +44,11 @@ public class Main {
             });
             System.out.println("|  ");
         });
+        System.out.print("  ");
+        for (int i=0;i<=playerCount;i++) {
+            System.out.print(i + "    ");
+        }
+        System.out.println();
     }
     
     private List<List<Boolean>> generatorLadder(int width, int playerCount) {
