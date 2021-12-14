@@ -17,6 +17,8 @@ public class Main {
     
         Random random = new Random();
         boolean isProb = random.nextInt(5) >= 3;
+        // add test
+        int a = 0;
     }
     
     @Test
