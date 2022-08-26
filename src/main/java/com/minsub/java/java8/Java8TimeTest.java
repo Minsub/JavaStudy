@@ -130,13 +130,17 @@ public class Java8TimeTest {
 	
 	@Test
 	public void just() throws Exception {
-		List list = Lists.newArrayList(1,2,3,4,5,6,7,8,9, 10);
-		list.subList(0, 3);
-		System.out.println(list.subList(10, 10));
-		
-		
-		
-		
+		String from = "2021-02-05";
+		String to = "2021-02-10";
+		String to2 = "2021-02-04";
+		String to3 = "2021-02-05";
+		LocalDate f = LocalDate.parse(from);
+		LocalDate t = LocalDate.parse(to);
+		LocalDate t2 = LocalDate.parse(to2);
+		LocalDate t3 = LocalDate.parse(to3);
+		System.out.println(f.isAfter(t));
+		System.out.println(f.isAfter(t2));
+		System.out.println(f.isAfter(t3));
 	}
 
 	public void test1() {
